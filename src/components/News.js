@@ -9,7 +9,6 @@ const News = (props)=>{
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
   const [totalResults, setTotalResults] = useState(0)
-  // document.title = `${capitaliseFirstLetter(props.category)} - NewsMonkey`;
 
   const capitaliseFirstLetter = (string)=> {
     return string.charAt(0).toUpperCase() + string.slice(1)
@@ -30,6 +29,7 @@ const News = (props)=>{
   }
 
   useEffect(() => {
+    document.title = `${capitaliseFirstLetter(props.category)} - NewsMonkey`;
     updateNews();
   }, [])
 
@@ -54,7 +54,7 @@ const News = (props)=>{
 
   return (
     <div className='container my-3'>
-      <h1 className='text-center' style={{margin: "34px 0px"}}>NewsMonkey - Top {capitaliseFirstLetter(props.category)} Headlines</h1>
+      <h1 className='text-center' style={{margin: "90px 0px 34px"}}>NewsMonkey - Top {capitaliseFirstLetter(props.category)} Headlines</h1>
       <InfiniteScroll dataLength={articles.length} next={fetchMoreData} hasMore={articles.length !== totalResults} loader={<Spinner/>}>
         <div className="container">
           <div className='row'>
